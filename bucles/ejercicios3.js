@@ -5,7 +5,11 @@ console.log("Ejercicio 1: Bucle for");
 // Escribe una función llamada 'imprimirNumeros' que use un bucle for para imprimir
 // los números del 1 al 10.
 
-// Tu código aquí
+function imprimirNumeros(){
+    for(i=1; i<11; i++){
+        console.log(i);
+    }
+}
 
 // Llamada a la función
 imprimirNumeros();
@@ -16,7 +20,13 @@ console.log("\nEjercicio 2: Bucle for (suma)");
 // Escribe una función llamada 'sumarNumeros' que use un bucle for para sumar
 // los números del 1 al n, donde n es un parámetro de la función.
 
-// Tu código aquí
+function sumarNumeros(n){
+    let num = 0;
+    for(i=1; i<=n; i++){
+        num +=i;
+    }
+    return num;
+}
 
 console.log(sumarNumeros(5));  // Debería mostrar: 15
 console.log(sumarNumeros(10)); // Debería mostrar: 55
@@ -26,7 +36,12 @@ console.log("\nEjercicio 3: Bucle while");
 // Escribe una función llamada 'contarRegresivo' que use un bucle while para
 // contar regresivamente desde n hasta 1, donde n es un parámetro de la función.
 
-// Tu código aquí
+function contarRegresivo(n){
+    while(n >= 1){
+        console.log(n);
+        n--;
+    }
+}
 
 contarRegresivo(5);
 // Debería imprimir: 5 4 3 2 1
@@ -38,9 +53,34 @@ console.log("\nEjercicio 4: Bucle do-while");
 // La función debe generar un número aleatorio y "preguntar" al usuario hasta
 // que adivine correctamente. (Simula las entradas del usuario con un array de números)
 
-// Tu código aquí
+function adivinarNumero(intentosUsuario) {
+    const numeroSecreto = Math.floor(Math.random() * 10) + 1; 
+    let intentosRealizados = 0;
+    let i = 0;
 
-const intentosUsuario = [3, 7, 5, 2]; // Simula las entradas del usuario
+    console.log("Intenta adivinar el número (entre 1 y 10)");
+
+    do {
+        if (i >= intentosUsuario.length) break;
+        const intento = intentosUsuario[i]; 
+        intentosRealizados++;
+
+        if (intento < numeroSecreto) {
+            console.log("Intento " + intentosRealizados + ": Demasiado bajo");
+        } else if (intento > numeroSecreto) {
+            console.log("Intento " + intentosRealizados + ": Demasiado alto");
+        } else {
+            console.log("¡Correcto! Has adivinado en " + intentosRealizados + " intentos.");
+            return;
+        }
+
+        i++;
+    } while (i < intentosUsuario.length);
+
+    console.log("No has adivinado el número. Era: " + numeroSecreto);
+}
+
+const intentosUsuario = [3, 7, 5, 2];
 adivinarNumero(intentosUsuario);
 // Ejemplo de salida:
 // Intenta adivinar el número (entre 1 y 10)
@@ -53,7 +93,17 @@ console.log("\nEjercicio 5: Bucle for (array)");
 // Escribe una función llamada 'encontrarMayor' que use un bucle for para encontrar
 // el número mayor en un array de números.
 
-// Tu código aquí
+function encontrarMayor(numeros){
+    if (numeros.length === 0) return null;
+  
+    let mayor = numeros[0];
+    for (let i = 1; i < numeros.length; i++) {
+      if (numeros[i] > mayor) {
+        mayor = numeros[i];
+      }
+    }
+    return mayor;
+  }
 
 console.log(encontrarMayor([2, 5, 1, 9, 3])); // Debería mostrar: 9
 console.log(encontrarMayor([-1, -5, -2]));    // Debería mostrar: -1
@@ -63,7 +113,15 @@ console.log("\nEjercicio 6: Bucle while (potencia)");
 // Escribe una función llamada 'calcularPotencia' que use un bucle while para calcular
 // la potencia de un número. La función debe tomar dos parámetros: la base y el exponente.
 
-// Tu código aquí
+function calcularPotencia(base, exponente) {
+    let resultado = 1;
+    let i = 0;
+    while (i < exponente) {
+      resultado *= base;
+      i++;
+    }
+    return resultado;
+  }
 
 console.log(calcularPotencia(2, 3));  // Debería mostrar: 8
 console.log(calcularPotencia(5, 2));  // Debería mostrar: 25
